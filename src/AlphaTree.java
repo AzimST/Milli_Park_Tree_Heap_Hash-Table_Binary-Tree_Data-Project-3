@@ -6,7 +6,9 @@ public class AlphaTree {
 
     public void insert(MilliPark mp){
         AlphaNode newNode = new AlphaNode(mp);
+
         AlphaNode current = root;
+
         if(root == null){root = newNode;}
         else{
             AlphaNode parent;
