@@ -19,15 +19,15 @@ public class Main {
 
             theTree.insert(mp);
         }
-        System.out.println("inORder");
-        theTree.inOrder(theTree.getRoot());
-        System.out.println("preOrder");
-        theTree.preOrder(theTree.getRoot());
         System.out.println("PostORder");
         theTree.postOrder(theTree.getRoot());
 
         int a = theTree.depthofThree(theTree.getRoot());
         System.out.println(a);
+        theTree.blancedTree(mpList);
+
+        AlphaNode aNode = theTree.findNodebyThreeLetters("Mal");
+        aNode.getMp().printToString();
 
     }
 }

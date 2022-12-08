@@ -20,10 +20,10 @@ public class BinaryMain {
         theTree.inOrder(theTree.getRoot());
         String a = "Yozgat Çamlığı Milli Parkı";
         String b = "Karatepe - Aslantaş Milli Parkı";
-        String c = "dsada";
-        String d = "dsada";
+        String c = "bot";
+        String d = "yozgat";
         System.out.println("1111111111111111");
-        System.out.println(c.compareTo(d));
+        System.out.println(d.substring(0,3).compareTo(c));
 
     }
 }
