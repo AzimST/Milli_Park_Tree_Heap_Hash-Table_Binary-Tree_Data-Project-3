@@ -4,17 +4,14 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        Path filePath = Path.of("parklar.txt");
+        Path filePath = Path.of("milli.txt");
 
         MilliPark m1 = new MilliPark();
 
         AlphaTree theTree = new AlphaTree();
 
 
-
         ArrayList<MilliPark> mpList = m1.MilliParkListele(filePath);
-
-
 
 
         for(MilliPark mp: mpList){

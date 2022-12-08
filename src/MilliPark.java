@@ -32,10 +32,15 @@ public class MilliPark {
         String arr1=arr.strip();
         String[] rawData = arr1.split("\n");
         for (String line:rawData) {
-            String[] lineData = line.split("/");
+            String[] lineData = line.split("; ");
+            //String[] pragraf = lineData[4].split(". ");
+            for (String s: lineData)
+                System.out.println(s);
+
             MilliPark mp = new MilliPark(mPIsim = lineData[0],mPNerede = lineData[1],
-                    mPYili = Integer.valueOf(lineData[3].strip()),
-                    mPHektar = Integer.valueOf(lineData[2].replace(",", "")));
+                    mPYili = Integer.valueOf(lineData[2].strip()),
+                    mPHektar = Integer.valueOf(lineData[3].replace(".", "")));
+
             MilliParkList.add(mp);
         }
         return  MilliParkList;

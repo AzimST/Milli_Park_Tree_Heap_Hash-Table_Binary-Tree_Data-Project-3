@@ -77,17 +77,6 @@ public class AlphaTree {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
     public AlphaNode getRoot() {return root;}
     public void setRoot(AlphaNode root) {this.root = root;}
 }
