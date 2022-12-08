@@ -10,6 +10,7 @@ public class AlphaTree {
         AlphaNode current = root;
 
         if(root == null){root = newNode;}
+
         else{
             AlphaNode parent;
             while(true){
