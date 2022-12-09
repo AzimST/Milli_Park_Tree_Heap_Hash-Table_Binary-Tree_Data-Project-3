@@ -81,7 +81,16 @@ public class AlphaTree {
             localRoot.getMp().printToString();
 
         }
+    }
 
+    public void treeBySentences(String[] sentences) {
+
+        for (String s : sentences){
+            String[] sentence = s.split(" ");
+            for (String word : sentence){
+
+            }
+    }
     }
 
     // ROOT'UNU ALDIGI AGACIN DERNILIGINI DONDUREN METHOD

@@ -10,11 +10,12 @@ public class MilliPark {
     private String[] sentences;
 
     public MilliPark() {}
-    public MilliPark(String mPIsim, String mPNerede, int mPYili, int mPHektar) {
+    public MilliPark(String mPIsim, String mPNerede, int mPYili, int mPHektar,String[] sentences) {
         this.mPIsim = mPIsim;
         this.mPNerede = mPNerede;
         this.mPYili = mPYili;
         this.mPHektar = mPHektar;
+        this.sentences = sentences;
     }
 
     public ArrayList<MilliPark> MilliParkListele(Path filePath) {
@@ -33,13 +34,17 @@ public class MilliPark {
         String[] rawData = arr1.split("\n");
         for (String line:rawData) {
             String[] lineData = line.split("; ");
-            //String[] pragraf = lineData[4].split(". ");
-            for (String s: lineData)
-                System.out.println(s);
+            String[] pragraf = lineData[4].split("\\. ");
+//            for(String s: pragraf)
+//                System.out.println(s);
+//
+//            System.out.println(pragraf.length);
+
 
             MilliPark mp = new MilliPark(mPIsim = lineData[0],mPNerede = lineData[1],
                     mPYili = Integer.valueOf(lineData[2].strip()),
-                    mPHektar = Integer.valueOf(lineData[3].replace(".", "")));
+                    mPHektar = Integer.valueOf(lineData[3].replace(".", "")),sentences= pragraf);
+
 
             MilliParkList.add(mp);
         }
@@ -75,7 +80,11 @@ public class MilliPark {
 
 
     public void printToString() {
+        System.out.println("-------------------");
         System.out.println(this.mPIsim+" "+this.mPNerede+" "+this.mPYili+" "+this.mPHektar);
+        for(String s: this.sentences)
+                System.out.println(s);
+
     }
 
 }
