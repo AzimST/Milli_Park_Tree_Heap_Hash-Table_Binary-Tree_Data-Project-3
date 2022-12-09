@@ -10,7 +10,7 @@ public class Main {
 
         AlphaTree theTree = new AlphaTree();
 
-
+// bi şey değiştirdim
         ArrayList<MilliPark> mpList = m1.MilliParkListele(filePath);
 
 
