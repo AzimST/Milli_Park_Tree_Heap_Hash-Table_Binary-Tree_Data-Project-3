@@ -36,35 +36,40 @@ public class AlphaTree {
     }// end insert
 
     public void insertWord(String s){
-        AlphaNode newNode = new AlphaNode(s);
+        String w = s.replace("\\.", "");
+        String a = w.replace(",","");
+        String word =a.toLowerCase();
 
-        AlphaNode current = root;
+        if(word != " "){
+            AlphaNode newNode = new AlphaNode(word);
+            AlphaNode current = root;
+            if(root == null){root = newNode;}
 
-        if(root == null){root = newNode;}
-
-        else{
-            AlphaNode parent;
-            while(true){
-                parent = current;
-                if(newNode.getWord().compareTo(current.getWord())==0){
-                    current.countadd(); // if mp.name and current node mp.name equals add count
-                    return;
-                }else if(newNode.getWord().compareTo(current.getWord())>0){ // if mp.name>currentName go to right child
-                    current = current.getRightchild();
-                    if(current == null) {
-                        parent.setRightchild(newNode);
+            else {
+                AlphaNode parent;
+                while (true) {
+                    parent = current;
+                    if (newNode.getWord().compareTo(current.getWord()) == 0) {
+                        current.countadd(); // if mp.name and current node mp.name equals add count
                         return;
-                    }
-                } // end go to right
-                else if (newNode.getWord().compareTo(current.getWord())<0){ // go to left child
-                    current = current.getLeftChild();
-                    if(current == null) {
-                        parent.setLeftChild(newNode);
-                        return;
-                    }
-                }// end left go
-            }// end while
-        }// end else no root
+                    } else if (newNode.getWord().compareTo(current.getWord()) > 0) { // if mp.name>currentName go to right child
+                        current = current.getRightchild();
+                        if (current == null) {
+                            parent.setRightchild(newNode);
+                            return;
+                        }
+                    } // end go to right
+                    else if (newNode.getWord().compareTo(current.getWord()) < 0) { // go to left child
+                        current = current.getLeftChild();
+                        if (current == null) {
+                            parent.setLeftChild(newNode);
+                            return;
+                        }
+                    }// end left go
+                }// end while
+
+            }// end else no root
+        }
     }// end insert
 
 // BU METHOD GIRILEN ILK 3 HARFI GIRILEN MILLI PARKI BULAN METHOD
