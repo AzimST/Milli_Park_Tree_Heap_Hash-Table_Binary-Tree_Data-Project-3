@@ -1,13 +1,31 @@
 public class AlphaNode {
     private MilliPark mp;
+    private String word;
     private int mpCount;
     private AlphaNode leftChild;
     private AlphaNode rightchild;
 
 
+
+
+    public AlphaNode(String word){
+        this.word = word;
+        this.mpCount=1;
+    }
     public AlphaNode(MilliPark mp) {
         this.mp = mp;
-        this.mpCount = 0;
+    }
+
+    public int getMpCount() {
+        return mpCount;
+    }
+
+    public String getWord() {
+        return (word+"-"+mpCount);
+    }
+
+    public void setWord(String word) {
+        this.word = word;
     }
 
     public void countadd(){this.mpCount++;}

@@ -16,7 +16,6 @@ public class AlphaTree {
             while(true){
                 parent = current;
                 if(mp.getmPIsim().compareTo(current.getMp().getmPIsim())==0){
-                    current.countadd(); // if mp.name and current node mp.name equals add count
                     return;
                 }else if(mp.getmPIsim().compareTo(current.getMp().getmPIsim())>0){ // if mp.name>currentName go to right child
                     current = current.getRightchild();
@@ -26,6 +25,38 @@ public class AlphaTree {
                     }
                 } // end go to right
                 else if (mp.getmPIsim().compareTo(current.getMp().getmPIsim())<0){ // go to left child
+                    current = current.getLeftChild();
+                    if(current == null) {
+                        parent.setLeftChild(newNode);
+                        return;
+                    }
+                }// end left go
+            }// end while
+        }// end else no root
+    }// end insert
+
+    public void insertWord(String s){
+        AlphaNode newNode = new AlphaNode(s);
+
+        AlphaNode current = root;
+
+        if(root == null){root = newNode;}
+
+        else{
+            AlphaNode parent;
+            while(true){
+                parent = current;
+                if(newNode.getWord().compareTo(current.getWord())==0){
+                    current.countadd(); // if mp.name and current node mp.name equals add count
+                    return;
+                }else if(newNode.getWord().compareTo(current.getWord())>0){ // if mp.name>currentName go to right child
+                    current = current.getRightchild();
+                    if(current == null) {
+                        parent.setRightchild(newNode);
+                        return;
+                    }
+                } // end go to right
+                else if (newNode.getWord().compareTo(current.getWord())<0){ // go to left child
                     current = current.getLeftChild();
                     if(current == null) {
                         parent.setLeftChild(newNode);
@@ -76,19 +107,23 @@ public class AlphaTree {
         if(localRoot != null){
             postOrder(localRoot.getLeftChild());
             postOrder(localRoot.getRightchild());
-            localRoot.getMp().printToString();
+            if(localRoot.getMp()!=null)
+                localRoot.getMp().printToString();
+            else
+                System.out.println(localRoot.getWord());
 
         }
     }
 
     public void treeBySentences(String[] sentences) {
-
+    AlphaTree theWordTree = new AlphaTree();
         for (String s : sentences){
             String[] sentence = s.split(" ");
             for (String word : sentence){
-
+                theWordTree.insertWord(word);
             }
-    }
+        }
+        theWordTree.postOrder(theWordTree.getRoot());
     }
 
     // ROOT'UNU ALDIGI AGACIN DERNILIGINI DONDUREN METHOD

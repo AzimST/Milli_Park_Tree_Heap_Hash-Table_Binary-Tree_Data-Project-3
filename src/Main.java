@@ -16,15 +16,14 @@ public class Main {
 
         Hashtable<String, MilliPark> ht = new Hashtable<>();
 
-
+        // listededeki milli parklar ağaca sırayla eklenir
         for(MilliPark mp: mpList){
-            mp.printToString();
-
             theTree.insert(mp);
         }
+
         System.out.println("PostORder");
         theTree.postOrder(theTree.getRoot());
-
+        // agacın derinliğinin bulunur
         int a = theTree.depthofThree(theTree.getRoot());
         System.out.println(a);
         theTree.blancedTree(mpList);
@@ -32,22 +31,25 @@ public class Main {
         AlphaNode aNode = theTree.findNodebyThreeLetters("Mal");
         aNode.getMp().printToString();
 
-        // milli parkları hash table a isme göre ekledik, sonra da print ettik
-        ht = new Hashtable<>();
-        for(MilliPark np: mpList){
-            ht.put(np.getmPIsim(),np);
-        }
-
-        System.out.println(ht);
 
 
-        // milli parkların yıllarını klavyeden alınan input a göre hash table üzerinde güncelledik
-        Scanner scanner = new Scanner(System.in);
-        for(MilliPark np:mpList){
-            int newDate = scanner.nextInt();
-            np.setmPYili(newDate);
-            ht.put(np.getmPIsim(), np);
-        }
+//
+//        // milli parkları hash table a isme göre ekledik, sonra da print ettik
+//        ht = new Hashtable<>();
+//        for(MilliPark np: mpList){
+//            ht.put(np.getmPIsim(),np);
+//        }
+//
+//        System.out.println(ht);
+//
+//
+//        // milli parkların yıllarını klavyeden alınan input a göre hash table üzerinde güncelledik
+//        Scanner scanner = new Scanner(System.in);
+//        for(MilliPark np:mpList){
+//            int newDate = scanner.nextInt();
+//            np.setmPYili(newDate);
+//            ht.put(np.getmPIsim(), np);
+//        }
 
 
     }
