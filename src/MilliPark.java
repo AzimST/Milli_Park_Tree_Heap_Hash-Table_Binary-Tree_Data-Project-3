@@ -34,8 +34,8 @@ public class MilliPark {
         for (String line:rawData) {
             String[] lineData = line.split("; ");
             //String[] pragraf = lineData[4].split(". ");
-            for (String s: lineData)
-                System.out.println(s);
+//            for (String s: lineData)
+//                System.out.println(s);
 
             MilliPark mp = new MilliPark(mPIsim = lineData[0],mPNerede = lineData[1],
                     mPYili = Integer.valueOf(lineData[2].strip()),

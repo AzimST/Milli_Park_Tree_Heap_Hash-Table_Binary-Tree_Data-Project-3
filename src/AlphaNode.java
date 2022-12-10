@@ -12,20 +12,6 @@ public class AlphaNode {
 
     public void countadd(){this.mpCount++;}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public MilliPark getMp() {return mp;}
     public void setMp(MilliPark mp) {this.mp = mp;}
     public AlphaNode getLeftChild() {return leftChild;}

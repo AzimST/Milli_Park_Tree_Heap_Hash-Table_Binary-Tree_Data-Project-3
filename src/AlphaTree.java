@@ -4,8 +4,6 @@ public class AlphaTree {
 
     private AlphaNode root;
 
-
-
     public void insert(MilliPark mp){
         AlphaNode newNode = new AlphaNode(mp);
 
