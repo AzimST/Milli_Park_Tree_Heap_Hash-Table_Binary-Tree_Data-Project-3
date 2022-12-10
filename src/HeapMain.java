@@ -13,15 +13,15 @@ public class HeapMain {
         // milli parkları yüzölçümlerine göre heap e ekliyoruz
         Heap heapNP = new Heap(mpList.size());
         for(MilliPark mp:mpList){
-            heapNP.insert(mp.getmPHektar());
+            heapNP.insert(mp);
         }
-
 
         int count = 1;
-        while (!heapNP.isEmpty()){
-            System.out.print(count++);
-            System.out.println(": "+heapNP.remove().getData());
-        }
+        // tüm milli parkları listeliyor, ama buna ihtiyacınız yok zaten şu anda
+//        while (!heapNP.isEmpty()){
+//            System.out.print(count++);
+//            System.out.println(": "+heapNP.remove().getData());
+//        }
 
 
         for(int i=0;i<3;i++){

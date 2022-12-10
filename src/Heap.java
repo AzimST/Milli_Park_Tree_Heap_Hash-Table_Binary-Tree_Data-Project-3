@@ -4,17 +4,17 @@ import java.util.List;
 public class Heap{
 
     class Node{
-        private int data;
+        private MilliPark data;
 
-        public Node(int data) {
+        public Node(MilliPark data) {
             this.data = data;
         }
 
-        public int getData() {
+        public MilliPark getData() {
             return data;
         }
 
-        public void setData(int data) {
+        public void setData(MilliPark data) {
             this.data = data;
         }
     }
@@ -41,7 +41,7 @@ public class Heap{
         return size == 0;
     }
 
-    public Boolean insert(int data){
+    public Boolean insert(MilliPark data){
 
         if(size == maxSize){
             return false;
@@ -55,7 +55,7 @@ public class Heap{
     public void trickleUp(int i){
         int parent = (i-1) / 2;
         Node bottom = heapList.get(i);
-        while (i>0 && heapList.get(parent).getData() < bottom.getData()){
+        while (i>0 && heapList.get(parent).getData().getmPHektar() < bottom.getData().getmPHektar()){
             heapList.set(i,heapList.get(parent));
             i = parent;
             parent = (parent-1)/2;
@@ -78,12 +78,15 @@ public class Heap{
             int leftChild = 2*i+1;
             int rightChild = leftChild+1;
 
-            if(rightChild < size && heapList.get(leftChild).getData() < heapList.get(rightChild).getData())
+            if(rightChild < size &&
+                    heapList.get(leftChild).getData().getmPHektar() <
+                            heapList.get(rightChild).getData().getmPHektar())
+
                 largerChild = rightChild;
             else
                 largerChild = leftChild;
 
-            if(top.getData() >= heapList.get(largerChild).getData())
+            if(top.getData().getmPHektar() >= heapList.get(largerChild).getData().getmPHektar())
                 break;
 
             heapList.set(i,heapList.get(largerChild));
@@ -92,20 +95,19 @@ public class Heap{
         heapList.set(i,top);
     }
 
-    public boolean swap(int i, int newVal){
+    public boolean swap(int i, MilliPark newVal){
 
         if(i<0 || i > size){
             return false;
         }
-        int oldVal = heapList.get(i).getData();
+        MilliPark oldVal = heapList.get(i).getData();
         heapList.get(i).setData(newVal); //TODO buradan emin değilim yeniden bak
 
-        if(oldVal < newVal)
+        if(oldVal.getmPHektar() < newVal.getmPHektar())
             trickleUp(i);
         else
             trickeDown(i);
         return true;
-
     }
 
     public void display(){
@@ -146,7 +148,9 @@ public class Heap{
         System.out.println("\n"+dots+dots);
     }
 
-
+    public int size(){
+        return size;
+    }
 
 
 }
