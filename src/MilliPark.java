@@ -3,6 +3,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MilliPark {
@@ -84,4 +85,13 @@ public class MilliPark {
         wordTree.treeBySentences(this.sentences);
     }
 
+    @Override
+    public String toString() {
+        return "MilliPark{" +
+                "Milli Park İsim='" + mPIsim + '\'' +
+                ", Milli Park Bulunduğu il='" + mPNerede + '\'' +
+                ", Hangi Yılda Milli Park ilan edildi=" + mPYili +
+                ", Milli Park Büyüklüğü=" + mPHektar +
+                '}';
+    }
 }
