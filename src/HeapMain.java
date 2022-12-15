@@ -1,5 +1,6 @@
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HeapMain {
 
@@ -11,27 +12,29 @@ public class HeapMain {
         ArrayList<MilliPark> mpList = m1.MilliParkListele(filePath);
 
         // milli parkları yüzölçümlerine göre heap e ekliyoruz
-        Heap heapNP = new Heap(mpList.size());
+        MaxHeap maxHeapNP = new MaxHeap(mpList.size());
         for(MilliPark mp:mpList){
-            heapNP.insert(mp.getmPHektar());
+            maxHeapNP.insert(mp);
         }
-
 
         int count = 1;
-        while (!heapNP.isEmpty()){
-            System.out.print(count++);
-            System.out.println(": "+heapNP.remove().getData());
-        }
+//        //  tüm milli parkları listeliyor, ama buna ihtiyacınız yok zaten şu anda
+//        while (!heapNP.isEmpty()){
+//            System.out.print(count++);
+//            System.out.println(": "+heapNP.remove().getData());
+//        }
 
 
         for(int i=0;i<3;i++){
             System.out.print(count++);
-            System.out.println(": "+heapNP.remove().getData());
+            System.out.println(": "+ maxHeapNP.remove().getData());
         }
 
-
-
-
+        System.out.println();
+        List<MaxHeap.Node> list = maxHeapNP.displayHeapList();
+        for(MaxHeap.Node mp:list){
+            System.out.println(mp.getData());
+        }
 
 //        Heap heap = new Heap(31); // make a Heap; max size 31
 //

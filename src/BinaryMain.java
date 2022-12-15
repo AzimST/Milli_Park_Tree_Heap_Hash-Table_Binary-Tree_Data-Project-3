@@ -34,15 +34,15 @@ public class BinaryMain {
 //        System.out.println();
 //        mp1.printToString();
 //
-        ArrayList<String> arrayList = new ArrayList<String >();
-        arrayList.add("merhaba");
-        arrayList.add("selam");
-        arrayList.add("hi");
-
-        System.out.println(arrayList);
-        System.out.println();
-        arrayList.set(0,"gracias");
-        System.out.println(arrayList);
+//        ArrayList<String> arrayList = new ArrayList<String >();
+//        arrayList.add("merhaba");
+//        arrayList.add("selam");
+//        arrayList.add("hi");
+//
+//        System.out.println(arrayList);
+//        System.out.println();
+//        arrayList.set(0,"gracias");
+//        System.out.println(arrayList);
 
 //        PriorityQueue<Integer> pq = new PriorityQueue<>();
 //        pq.add(10);
@@ -52,6 +52,9 @@ public class BinaryMain {
 //        pq.add(17);
 //        pq.add(8);
 //        System.out.println(pq);
+
+        System.out.println();
+
 
     }
 }

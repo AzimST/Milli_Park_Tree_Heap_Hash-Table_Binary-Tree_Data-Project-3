@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MilliPark {
@@ -85,4 +86,13 @@ public class MilliPark {
         wordTree.treeBySentences(this.sentences);
     }
 
+    @Override
+    public String toString() {
+        return "MilliPark{" +
+                "mPIsim='" + mPIsim + '\'' +
+                ", mPNerede='" + mPNerede + '\'' +
+                ", mPYili=" + mPYili +
+                ", mPHektar=" + mPHektar +
+                '}';
+    }
 }
