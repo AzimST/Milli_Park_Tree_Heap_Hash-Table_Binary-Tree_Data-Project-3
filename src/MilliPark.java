@@ -38,7 +38,7 @@ public class MilliPark {
             String[] lineData = line.split("; ");
 
             // paragraftaki cümleleri noktalra göre ayırıyoruz
-            String[] pragraf = lineData[4].split("\\. ");
+            String[] pragraf = lineData[4].toLowerCase().split("\\. ");
 
 
             MilliPark mp = new MilliPark(mPIsim = lineData[0],mPNerede = lineData[1],
@@ -50,7 +50,6 @@ public class MilliPark {
         }
         return  MilliParkList;
     }
-
 
 
     public String getmPIsim() {
@@ -77,16 +76,14 @@ public class MilliPark {
     public void setmPHektar(int mPHektar) {
         this.mPHektar = mPHektar;
     }
-
-
-    public void printToString() {
-        System.out.println(this.mPIsim+" "+this.mPNerede+" "+this.mPYili+" "+this.mPHektar);
-        AlphaTree wordTree = new AlphaTree();
-        wordTree.treeBySentences(this.sentences);
+    public String[] getSentences() {
+        return sentences;
     }
+
 
     @Override
     public String toString() {
+
         return "MilliPark{" +
                 "Milli Park İsim='" + mPIsim + '\'' +
                 ", Milli Park Bulunduğu il='" + mPNerede + '\'' +

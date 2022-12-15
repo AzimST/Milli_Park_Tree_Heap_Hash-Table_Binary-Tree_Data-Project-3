@@ -2,8 +2,8 @@ public class AlphaNode {
     private MilliPark mp;
     private String word;
     private int mpCount;
-    private AlphaNode leftChild;
-    private AlphaNode rightchild;
+    public AlphaNode leftChild;
+    public AlphaNode rightchild;
 
 
 
@@ -21,7 +21,7 @@ public class AlphaNode {
     }
 
     public String getWord() {
-        return (word+"-"+mpCount);
+        return word;
     }
 
     public void setWord(String word) {
@@ -30,10 +30,19 @@ public class AlphaNode {
 
     public void countadd(){this.mpCount++;}
 
+    @Override
+    public String toString() {
+        return "AlphaNode{" +
+                "kelime='" + word + '\'' +
+                ", tekrar=" + mpCount +
+                '}';
+    }
+
     public MilliPark getMp() {return mp;}
     public void setMp(MilliPark mp) {this.mp = mp;}
     public AlphaNode getLeftChild() {return leftChild;}
     public void setLeftChild(AlphaNode leftChild) {this.leftChild = leftChild;}
     public AlphaNode getRightchild() {return rightchild;}
     public void setRightchild(AlphaNode rightchild) {this.rightchild = rightchild;}
+
 }
