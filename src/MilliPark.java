@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -35,23 +36,20 @@ public class MilliPark {
         String[] rawData = arr1.split("\n");
         for (String line:rawData) {
             String[] lineData = line.split("; ");
-            String[] pragraf = lineData[4].split("\\. ");
-//            for(String s: pragraf)
-//                System.out.println(s);
-//
-//            System.out.println(pragraf.length);
-//mPIsim = lineData[0],mPNerede = lineData[1],
-//                    mPYili = Integer.valueOf(lineData[2].strip()),
-//                    mPHektar = Integer.valueOf(lineData[3].replace(".", "")),sentences= pragraf
 
-            MilliPark mp = new MilliPark(mPIsim = lineData[0],mPNerede = lineData[1],mPYili = Integer.valueOf(lineData[2].strip()),mPHektar = Integer.valueOf(lineData[3].replace(".", "")),sentences= pragraf);
+            // paragraftaki cümleleri noktalra göre ayırıyoruz
+            String[] pragraf = lineData[4].toLowerCase().split("\\. ");
+
+
+            MilliPark mp = new MilliPark(mPIsim = lineData[0],mPNerede = lineData[1],
+                    mPYili = Integer.valueOf(lineData[2].strip()),
+                    mPHektar = Integer.valueOf(lineData[3].replace(".", "")),sentences= pragraf);
 
 
             MilliParkList.add(mp);
         }
         return  MilliParkList;
     }
-
 
 
     public String getmPIsim() {
@@ -78,21 +76,19 @@ public class MilliPark {
     public void setmPHektar(int mPHektar) {
         this.mPHektar = mPHektar;
     }
-
-
-    public void printToString() {
-        System.out.println(this.mPIsim+" "+this.mPNerede+" "+this.mPYili+" "+this.mPHektar);
-        AlphaTree wordTree = new AlphaTree();
-        wordTree.treeBySentences(this.sentences);
+    public String[] getSentences() {
+        return sentences;
     }
 
+// deneme
     @Override
     public String toString() {
+
         return "MilliPark{" +
-                "mPIsim='" + mPIsim + '\'' +
-                ", mPNerede='" + mPNerede + '\'' +
-                ", mPYili=" + mPYili +
-                ", mPHektar=" + mPHektar +
+                "Milli Park İsim='" + mPIsim + '\'' +
+                ", Milli Park Bulunduğu il='" + mPNerede + '\'' +
+                ", Hangi Yılda Milli Park ilan edildi=" + mPYili +
+                ", Milli Park Büyüklüğü=" + mPHektar +
                 '}';
     }
 }
