@@ -22,18 +22,18 @@ public class Main {
         }
 
         System.out.println("PostORder");
-        theTree.postOrder(theTree.getRoot(),theWordTree);
+        theTree.postOrder(theTree.getRoot(), theWordTree);
         // agacın derinliğinin bulunur
-        int a = theTree.depthofThree(theTree.getRoot());
-        System.out.println(a);
-        theTree.blancedTree(mpList);
+        int depthTree = theTree.depthofTree(theTree.getRoot());
+        int blanceddepthTree =theTree.blancedTree();
+        int nodeCount=theTree.countNode(theTree.getRoot());
+        System.out.println("Milli Park ağacımız "+depthTree+" derinliğe "+nodeCount+" tane milli parka sahip. Eğer "+nodeCount+
+                " tane milli park ile dengeli bir ağaç olsaydı "+blanceddepthTree+" derinliğe sahip olurdu");
 
         AlphaNode aNode = theTree.findNodebyThreeLetters("Mal");
         System.out.println(aNode.getMp());
-
+        // KELİME AGACINI EKRANA YAZDIRIR
         theWordTree.postOrderWord(theWordTree.getRoot());
-        int dep=theWordTree.depthofThree(theWordTree.getRoot());
-        System.out.println(dep);
 
 
 //**********************************************************************************************************************
@@ -58,14 +58,16 @@ public class Main {
         System.out.print("yüzölçümünü güncellemek istediğiniz milli park ın ismini giriniz: ");
         String input = scanner.nextLine();
         while (!input.equals("q")){
-            System.out.print("enter the new area value: ");
+            System.out.println("enter the new area value: ");
             int newDate = scanner.nextInt();
+            scanner.nextLine();
             MilliPark milliPark = findNP(input,mpList); // ISMI GIRILEN MILLI PARK I DONER
-            milliPark.setmPYili(newDate);
+            milliPark.setmPHektar(newDate);
             ht.put(milliPark.getmPIsim(), milliPark);
             System.out.println(ht.get(milliPark.getmPIsim()));
-            System.out.print("yüzölçümünü güncellemek istediğiniz milli park ın ismini giriniz: ");
+            System.out.println("yüzölçümünü güncellemek istediğiniz milli park ın ismini giriniz: ");
             input = scanner.nextLine();
+
         }
 
 

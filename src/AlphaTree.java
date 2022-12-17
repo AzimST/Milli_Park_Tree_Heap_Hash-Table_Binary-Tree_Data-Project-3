@@ -1,32 +1,26 @@
 import java.util.ArrayList;
 
 public class AlphaTree {
-
     private AlphaNode root;
 
-
-
+    // Tree ye MiliiPArk ekleyen method
     public void insert(MilliPark mp){
         AlphaNode newNode = new AlphaNode(mp);
-
-        AlphaNode current = root;
-
         if(root == null){root = newNode;}
 
-        else{
+       else{
+            AlphaNode current = root;
             AlphaNode parent;
             while(true){
                 parent = current;
-                if(mp.getmPIsim().compareTo(current.getMp().getmPIsim())==0){
-                    return;
-                }else if(mp.getmPIsim().compareTo(current.getMp().getmPIsim())>0){ // if mp.name>currentName go to right child
+                if(mp.getmPIsim().compareToIgnoreCase(current.getMp().getmPIsim())>0){ // if mp.name>currentName go to right child
                     current = current.getRightchild();
                     if(current == null) {
                         parent.setRightchild(newNode);
                         return;
                     }
                 } // end go to right
-                else if (mp.getmPIsim().compareTo(current.getMp().getmPIsim())<0){ // go to left child
+                else if (mp.getmPIsim().compareToIgnoreCase(current.getMp().getmPIsim())<0){ // go to left child
                     current = current.getLeftChild();
                     if(current == null) {
                         parent.setLeftChild(newNode);
@@ -37,6 +31,7 @@ public class AlphaTree {
         }// end else no root
     }// end insert
 
+    // Kelime Ağacına kelime ekleyen method
     public void insertWord(String s){
         String w = s.replace(".", "");
         String a = w.replace(",","");
@@ -80,7 +75,7 @@ public class AlphaTree {
                     }// end while
                 }// end else no root
             }
-    }
+        }
     }// end insert
 
 // BU METHOD GIRILEN ILK 3 HARFI GIRILEN MILLI PARKI BULAN METHOD
@@ -88,7 +83,6 @@ public class AlphaTree {
         AlphaNode current = root;
 
         while(current.getMp().getmPIsim().substring(0,3).toLowerCase().compareTo(letter.toLowerCase()) != 0){
-
             if(current.getMp().getmPIsim().substring(0,3).toLowerCase().compareTo(letter.toLowerCase()) > 0){
                 current = current.getLeftChild();
             }
@@ -100,71 +94,56 @@ public class AlphaTree {
         return current;
     }
 
-    // POSTORDER ŞEKLİNDE EKRANA BASTIRIR
-    public void postOrder(AlphaNode localRoot,AlphaTree wordTree){
+    // POSTORDER ŞEKLİNDE MİLLİPARKLARI EKRANA BASTIRIR
+    public void postOrder(AlphaNode localRoot, AlphaTree wordAlphaTree){
         if(localRoot != null) {
-            if (localRoot.getMp() != null){
-//                System.out.println(localRoot.getMp());
-                for(String sentence:localRoot.getMp().getSentences()){
-                    String[] words = sentence.split(" ");
-                    for(String word: words){
-                        wordTree.insertWord(word);
-                    }
+            postOrder(localRoot.getLeftChild(), wordAlphaTree);
+            postOrder(localRoot.getRightchild(), wordAlphaTree);
+            System.out.println(localRoot.getMp());
+            // MİLLİPARKIN BİlGİ PARAGRAFINI YENİ BRİ AGACA EKLER
+            for(String sentence:localRoot.getMp().getSentences()){
+                String[] words = sentence.split(" ");
+                for(String word: words){
+                    wordAlphaTree.insertWord(word);
                 }
             }
-            postOrder(localRoot.getLeftChild(),wordTree);
-            postOrder(localRoot.getRightchild(),wordTree);
-            // eğer alpha nodeun MilliPArkı null ise kelimeleri yazdırıyor
-
         }
     }
 
+    // postORder Şeklinde kelimeleri ekrana yazdırıyor
     public void postOrderWord(AlphaNode localRoot){
         if(localRoot != null) {
             postOrderWord(localRoot.getLeftChild());
             postOrderWord(localRoot.getRightchild());
-            // eğer getword null degil ise ekrana bastırır
-            if (localRoot.getWord() != null){
-                System.out.println(localRoot);
-            }
+            System.out.println(localRoot);
+
         }
     }
 
-
-//    // cumleleri kelime kelime insert worde yollayan method
-//    public void treeBySentences(String[] sentences) {
-//    AlphaTree theWordTree = new AlphaTree();
-//        for (String s : sentences){
-//            String[] sentence = s.split(" ");
-//            for (String word : sentence){
-//                // kelimeyi agaca ekliyoruz
-//                theWordTree.insertWord(word);
-//            }
-//        }
-//        theWordTree.postOrder(theWordTree.getRoot());
-//    }
-
     // ROOT'UNU ALDIGI AGACIN DERNILIGINI DONDUREN METHOD
-    public int depthofThree(AlphaNode root){
+    public int depthofTree(AlphaNode root){
         if(root == null){return 0;}
         else if(root.getRightchild() == null && root.getLeftChild() == null){return 1;}
-        else if (root.getLeftChild()==null){return depthofThree(root.getRightchild())+1;}
-        else if (root.getRightchild() == null){return depthofThree(root.getLeftChild())+1;}
+        else if (root.getLeftChild()==null){return depthofTree(root.getRightchild())+1;}
+        else if (root.getRightchild() == null){return depthofTree(root.getLeftChild())+1;}
+        return Math.max(depthofTree(root.getLeftChild()),
+                depthofTree(root.getRightchild())) + 1;
 
-
-        return Math.max(depthofThree(root.getLeftChild()),
-                depthofThree(root.getRightchild())) + 1;
-
+    }
+    // AGACTA KAÇ TANE NODE OLDUGUNU BULAN METHOD
+    public int countNode(AlphaNode root){
+        if(root==null){return 0;}
+        int l =countNode(root.getRightchild());
+        int r = countNode(root.getLeftChild());
+        return  1+l+r;
     }
 
     // bu kod blogu listedki eleman sayısında dengeli bir tree olsaydı kaç derinligine sahip olduğunu ekrana yazdırır
-    public void blancedTree(ArrayList mpList){
-        int listSize = mpList.size();
+    public int blancedTree(){
+        int listSize = countNode(root);
         double depth =  Math.log(listSize)/Math.log(2);
-        System.out.println((int) depth+1);
-
+        return (int) depth+1;
     }
 
     public AlphaNode getRoot() {return root;}
-    public void setRoot(AlphaNode root) {this.root = root;}
 }
