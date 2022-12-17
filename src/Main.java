@@ -16,6 +16,7 @@ public class Main {
 
         ArrayList<MilliPark> mpList = m1.MilliParkListele(filePath);
 
+        // hashtable tanımladık
         Hashtable<String, MilliPark> ht = new Hashtable<>();
 
         // listededeki milli parklar ağaca sırayla eklenir
@@ -36,42 +37,68 @@ public class Main {
         theWordTree.postOrderWord(theWordTree.getRoot());
         int dep=theWordTree.depthofThree(theWordTree.getRoot());
         System.out.println(dep);
-//
-//        // milli parkları hash table a isme göre ekledik, sonra da print ettik
-//        ht = new Hashtable<>();
-//        for(MilliPark np: mpList){
-//            ht.put(np.getmPIsim(),np);
-//        }
-//
-//        System.out.println(ht);
-//
-//
-//        // milli parkların yıllarını klavyeden alınan input a göre hash table üzerinde güncelledik
-//        Scanner scanner = new Scanner(System.in);
-//        for(MilliPark np:mpList){
-//            int newDate = scanner.nextInt();
-//            np.setmPYili(newDate);
-//            ht.put(np.getmPIsim(), np);
-//        }
 
-    }
 
-    public void addToHashTable(ArrayList<MilliPark> mpList, Hashtable<String, MilliPark> ht){
-
+//**********************************************************************************************************************
+        // 2. KISIM - HASHTABLE
+//**********************************************************************************************************************
+        // 2.a - MILLI PARKLARI HASH TABLE A EKLEDIK
         for(MilliPark np: mpList){
             ht.put(np.getmPIsim(),np);
         }
 
-        System.out.println(ht);
+        // HASHTABLE DAKI MILLI PARKLARI EKRANA BASTIRIR
+        for(MilliPark mp:ht.values()){
+            System.out.println(mp);
+        }
+
+        // 2.b - MILLI PARKLARIN YILLARINI KLAVYEDEN ALINAN INPUT A GORE HASH TABLE UZERINDE GUNCELLEDIK
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("yüzölçümünü güncellemek istediğiniz milli park ın ismini giriniz: ");
+        String input = scanner.nextLine();
+        while (!input.equals("q")){
+            System.out.print("enter the new area value: ");
+            int newDate = scanner.nextInt();
+            MilliPark milliPark = findNP(input,mpList); // ISMI GIRILEN MILLI PARK I DONER
+            milliPark.setmPYili(newDate);
+            ht.put(milliPark.getmPIsim(), milliPark);
+            System.out.println(ht.get(milliPark.getmPIsim()));
+            System.out.print("yüzölçümünü güncellemek istediğiniz milli park ın ismini giriniz: ");
+            input = scanner.nextLine();
+        }
+
+
+
+//**********************************************************************************************************************
+        // 3. KISIM - HEAP/MAX HEAP
+//**********************************************************************************************************************
+
+        // 3.b - MILLI PARKLARI YUZOLCUMLERINE GORE HEAP E EKLIYORUZ
+        MaxHeap maxHeapNP = new MaxHeap(mpList.size());
+        for(MilliPark mp:mpList){
+            maxHeapNP.insert(mp);
+        }
+
+        //3.c - YUZOLCUMU EN BUYUK 3 MILLI PARK I HEAP TEN CEKIP EKRANA BASTIRIYORUZ
+        int count = 1;
+        for(int i=0;i<3;i++){
+            System.out.print(count++);
+            System.out.println(": "+ maxHeapNP.remove().getData());
+        }
+//**********************************************************************************************************************
+
     }
 
-    public void updateOnHashTable(ArrayList<MilliPark> mpList, Hashtable<String, MilliPark> ht){
-        Scanner scanner = new Scanner(System.in);
-        for(MilliPark np:mpList){
-            int newDate = scanner.nextInt();
-            np.setmPYili(newDate);
-            ht.put(np.getmPIsim(), np);
-        }
+    // PROJENIN 2. KISMI ICIN YAZILMIS METHOD, ISMI PARAMETRE OLARAK GIRILEN MILLI PARKI DONDURUR
+    // BULAMAZSA NULL DONER
+   static MilliPark findNP(String name, ArrayList<MilliPark> mpList){
+        for(MilliPark mp : mpList){
+            if(mp.getmPIsim().equals(name)){
+                return mp;
+            }
+        }return null;
     }
+
+
 
 }
