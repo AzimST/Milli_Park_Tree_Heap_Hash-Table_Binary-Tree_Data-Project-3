@@ -16,9 +16,6 @@ public class Main {
 
         ArrayList<MilliPark> mpList = m1.MilliParkListele(filePath);
 
-        // hashtable tanımladık
-        Hashtable<String, MilliPark> ht = new Hashtable<>();
-
         // listededeki milli parklar ağaca sırayla eklenir
         for(MilliPark mp: mpList){
             theTree.insert(mp);
@@ -42,6 +39,10 @@ public class Main {
 //**********************************************************************************************************************
         // 2. KISIM - HASHTABLE
 //**********************************************************************************************************************
+
+        // hashtable tanımladık
+        Hashtable<String, MilliPark> ht = new Hashtable<>();
+
         // 2.a - MILLI PARKLARI HASH TABLE A EKLEDIK
         for(MilliPark np: mpList){
             ht.put(np.getmPIsim(),np);

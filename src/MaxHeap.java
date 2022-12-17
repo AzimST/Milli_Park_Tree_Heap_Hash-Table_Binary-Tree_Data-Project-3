@@ -110,44 +110,6 @@ public class MaxHeap {
         return true;
     }
 
-    public void display(){
-        for(int i = 0;i<size;i++){
-            if(heapList.get(i) != null)
-                System.out.println(heapList.get(i).getData()+" ");
-            else
-                System.out.println("** ");
-        } System.out.println();
-
-        int blanks = 32;
-        int itemsPerRow = 1;
-        int column = 0;
-        int j = 0;
-        String dots = "................................";
-        System.out.println(dots+dots);
-
-        while (size>0){
-            if(column == 0){
-                for (int k = 0; k<blanks;k++){
-                    System.out.println(" ");
-                }
-            }
-            System.out.println(heapList.get(j).getData());
-            if(++j == size)
-                break;
-
-            if(++column  == itemsPerRow){
-                blanks /= 2;
-                itemsPerRow *= 2;
-                column = 0;
-                System.out.println();
-            }else
-                for(int k=0;k<blanks*2-2;k++){
-                    System.out.println(" ");
-                }
-        }
-        System.out.println("\n"+dots+dots);
-    }
-
     public int size(){
         return size;
     }
@@ -159,3 +121,4 @@ public class MaxHeap {
 
 
 }
+
