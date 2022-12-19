@@ -79,7 +79,7 @@ public class AlphaTree {
     }// end insert
 
 // BU METHOD GIRILEN ILK 3 HARFI GIRILEN MILLI PARKI BULAN METHOD
-    public AlphaNode findNodebyThreeLetters(String letter){
+    public String findNodebyThreeLetters(String letter){
         AlphaNode current = root;
 
         while(current.getMp().getmPIsim().substring(0,3).toLowerCase().compareTo(letter.toLowerCase()) != 0){
@@ -91,7 +91,7 @@ public class AlphaTree {
             }
             if(current == null){return null;}
         }
-        return current;
+        return current.getMp().getmPNerede();
     }
 
     // POSTORDER ŞEKLİNDE MİLLİPARKLARI EKRANA BASTIRIR

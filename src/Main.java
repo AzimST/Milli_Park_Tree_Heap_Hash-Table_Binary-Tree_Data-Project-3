@@ -30,8 +30,8 @@ public class Main {
         System.out.println("Milli Park ağacımız "+depthTree+" derinliğe "+nodeCount+" tane milli parka sahip. Eğer "+nodeCount+
                 " tane milli park ile dengeli bir ağaç olsaydı "+blanceddepthTree+" derinliğe sahip olurdu");
 
-        AlphaNode aNode = theTree.findNodebyThreeLetters("Mal");
-        System.out.println(aNode.getMp());
+        String MilliParksehri = theTree.findNodebyThreeLetters("Mal");
+        System.out.println(MilliParksehri);
         // KELİME AGACINI EKRANA YAZDIRIR
         theWordTree.postOrderWord(theWordTree.getRoot());
 
