@@ -4,11 +4,10 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 public class Main {
-    static AlphaTree theWordTree = new AlphaTree();
     public static void main(String[] args) {
 
         Path filePath = Path.of("milli.txt");
-
+        AlphaTree theWordTree = new AlphaTree();
         MilliPark m1 = new MilliPark();
 
         AlphaTree theTree = new AlphaTree();
@@ -31,8 +30,9 @@ public class Main {
                 " tane milli park ile dengeli bir ağaç olsaydı "+blanceddepthTree+" derinliğe sahip olurdu");
 
         String MilliParksehri = theTree.findNodebyThreeLetters("Mal");
-        System.out.println(MilliParksehri);
+        System.out.println("Aradığınız milli park "+MilliParksehri+" ilinde");
         // KELİME AGACINI EKRANA YAZDIRIR
+
         theWordTree.postOrderWord(theWordTree.getRoot());
 
 
